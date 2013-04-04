@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link href="/stylesheets/board.css" rel="stylesheet" type="text/css" media="all"> 
+</head>
+<body>
+ <h1 id="page_title">话题板</h1>
+  <p id="notice"><%= notice %></p>
+ <table id="message_board">
+  <tr>
+    <th align="left">话题</th>
+  </tr>
+ 
+  <% @boards.each do |board| %>
+    <tr>
+      <td><%= link_to board.title, board %></td>
+    </tr>
+  <% end %>
+ </table>
+ <%= will_paginate @boards %>
+<div id="new_board_button">
+  <a href="/boards/new"><input type="submit" value="发起话题" id="submit"/></a>
+</div>

@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LoginApp</title>
-  <%= stylesheet_link_tag :all %>
+  <title>Rails 布告栏</title>
+  
+     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="all"> 
+  <%= stylesheet_link_tag ""%>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-    <div id="nav">
-        <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id)%>
-        <%= link_to "Logout", :logout%>
-        <% else %>
-        <%= link_to "Register", new_user_path%> | 
-        <%= link_to "Login", :login %>
-        <% end %>
+   <div id ="sidebar_left">
+         <p>温馨提示1:<br/>姑且把它称为论坛吧。虽然的确很矬，但是它很干净。因为权限模块写不对，所以可以直接跳过登录，但是建议还是先注册下，再登录，否则当你发帖的时候就会出现错误了。注册的时候用户名不能是中文。</p>
+  </div>
+
+  <div id = "sidebar_right">
+    <p>温馨提示2:<br/>登录之后，如果你想发起某个话题的时候，你会发现它会让你填id和title，id的话一般就是按照1234..往下排就行了，至少不能小于已经有的话题个数，否则id就可能会重。再次证明这是个技术做的很矬的论坛。</p>
+  </div>
+ 
+    <div id="wrapper">
+        <div id="top_nav">
+            <h1><%= image_tag("/images/rails.png", :size => '50x50') %> Rails布告栏</h1>
+            
+            <% if current_user %>
+            <%= link_to "修改用户信息", edit_user_path(current_user.id)%> |
+            <%= link_to "logout", :logout%>
+            <% else %>
+            <%= link_to "注册", new_user_path%> | 
+            <%= link_to "登录", :login %>
+            <% end %>
+            <div class="bclear"></div>
+        </div>
+        
+    
+        <div id="content">
+            <%= yield %>
+        </div>
+
+       
+        </div>
     </div>
 
-
-<%= yield %>
-
+ 
+     <div id="footer">
+         <p>&copy;Published by <a href="gunnerzxp.github.com" target="_blank">vector</a> with the help of <a href="github.com/baileylo/login_app" target="_blank">baileylo</a></p>
 </body>
 </html>

@@ -1,0 +1,24 @@
+#page_title {
+	color: #aaddff;
+	padding-top: 12px;
+	padding-right: 8px;
+}
+#message_board {
+	width: 580px;
+    margin: 80px auto;
+    background-color:#FCFCFC;
+    font-family: Arial;
+}
+
+#new_board_button {
+	padding-left: 12px;
+}
+#submit {
+    background-color:#f0f0f0;
+    border:1px solid #dbdbdb;
+    padding:5px;
+    -webkit-border-radius:7px;
+    -moz-border-radius:7px;
+    color: #000;
+    font-style:italic;
+}

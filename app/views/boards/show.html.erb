@@ -1,0 +1,45 @@
+<html>
+<head>
+ <style type="text/css">
+
+#conversation_comments_last {
+  padding-left: 6cm;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="page_title"><%= @board.title %></h1>
+<p id="notice"><%= notice %></p>
+<%= link_to 'Rails布告栏', boards_path %> &gt; <%= link_to @board.title, @board %> <br />
+ 
+   
+<table>
+  <tr>
+    <th id="th1">帖子 / 发布者</th>
+    <th id="th2">最后回复</th>
+    <th id="th3">回复数</th>
+  </tr>
+<% @board.conversations.each do |conversation| %>
+  <tr>
+    <td id="conversation_tile">
+      <%= link_to conversation.title, board_conversation_path(:board_id => @board, :id => conversation) %> / 
+      <%= conversation.user.username %>
+    </td>
+    <td id="conversation_comments_last">
+      <%= conversation.comments.find(:last).created_at %><br />
+      by <%= conversation.comments.find(:last).user.username %>
+    </td>
+    <td id="conversation_comments_count">
+      <%= conversation.comments.count - 1%>
+    </td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @conversations %>   
+<br/>
+
+<pre>  <%= link_to '发布新帖', new_board_conversation_url(@board) %></pre>
+</body>
+</html>

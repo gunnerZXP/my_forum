@@ -1,0 +1,29 @@
+<h1>会话列表</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Board</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @conversations.each do |conversation| %>
+  <tr>
+    <td><%= conversation.id %></td>
+    <td><%= conversation.title %></td>
+    <td><%= conversation.board_id %></td>
+    <td><%= conversation.user_id %></td>
+    <td><%= link_to '显示更多', @conversation %></td>
+     <td><%= link_to '编辑', edit_conversation_path(conversation) %></td>
+    <td><%= link_to 'Destroy', @conversation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新建会话',new_conversation_path %>

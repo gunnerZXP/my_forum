@@ -1,18 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.2.11'
 gem 'authlogic'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
+# gem 'sqlite3-ruby', :require => 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 # Use unicorn as the web server
-# gem 'unicorn'
-
+# gem 'unicorn' 
+ gem 'will_paginate'
 # Deploy with Capistrano
 # gem 'capistrano'
-
+ gem 'therubyracer'
+ gem 'execjs'
 # To use debugger
 # gem 'ruby-debug'
 
